@@ -1,0 +1,25 @@
+{
+    "name": "stoffel/console-canvas",
+    "description": "Helper to draw graphics and compose elements on top of Symfony Console Component",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christopher Hertel",
+            "email": "mail@christopher-hertel.de"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "stoffel/console-gradient": "^0.1",
+        "stoffel/console-headline": "^0.1",
+        "stoffel/console-image": "^0.2",
+        "stoffel/console-sourcecode": "^0.1",
+        "symfony/console": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stoffel\\Console\\Canvas\\": "src/"
+        }
+    }
+}

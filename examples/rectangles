@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+use Stoffel\Console\Canvas\CanvasHelper;
+use Stoffel\Console\Canvas\Dimension;
+use Stoffel\Console\Canvas\Element\Headline;
+use Stoffel\Console\Canvas\Element\Rectangle;
+use Stoffel\Console\Canvas\Fill;
+use Stoffel\Console\Canvas\Position;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\SingleCommandApplication;
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+(new SingleCommandApplication())
+    ->setCode(function (InputInterface $input, OutputInterface $output) {
+
+        $canvas = CanvasHelper::create($output);
+        $canvas
+            ->setBackground(Fill::withGradient(['#000000', '#999999']))
+            ->addElement(new Position(10, 10), new Rectangle(new Dimension(10, 5), Fill::withColor('#FF0000')))
+            ->addElement(new Position(50, 5), new Rectangle(new Dimension(20, 5), Fill::withGradient('summer')))
+            ->addElement(new Position(100, 5), new Rectangle(new Dimension(30, 25), Fill::withColor('#00FF00')))
+            ->addElement(new Position(10, 40), new Headline('Hello World', Fill::withColor('yellow')))
+            ->draw();
+
+        $output->write(PHP_EOL);
+    })
+    ->run();
